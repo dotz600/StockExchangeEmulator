@@ -1,4 +1,4 @@
-![Screenshot of the Application](צילום מסך 2024-06-15 225544.png)
+![Screenshot of the Application](screenshoot.png)
 Currency Trading Simulator
 This application simulates real-time trades on currency pairs,
 such as USD/EUR. It is built using a three-layer architecture: UILayer, BusinessLayer, and DataLayer.
