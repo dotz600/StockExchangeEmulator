@@ -3,6 +3,17 @@
 This application simulates real-time trades on currency pairs, such as USD/EUR.
 It is built using a three-layer architecture: UILayer, BusinessLayer, and DataLayer.
 
+## Configuration
+
+1. **Configure the Database Connection**:
+   - Copy the file `DataLayer/appsettings.json.example` to `DataLayer/appsettings.json`.
+   - Open `DataLayer/appsettings.json` and replace the placeholder connection string with your own.
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Your_Connection_String_Here"
+     }
+   
 ## Features
 
 - Simulates changes in maximum and minimum prices for currency pairs.
@@ -17,16 +28,7 @@ It is built using a three-layer architecture: UILayer, BusinessLayer, and DataLa
 - .NET Core SDK
 - SQL Server
   
-## Configuration
 
-1. **Configure the Database Connection**:
-   - Copy the file `DataLayer/appsettings.json.example` to `DataLayer/appsettings.json`.
-   - Open `DataLayer/appsettings.json` and replace the placeholder connection string with your own.
-   ```json
-   {
-     "ConnectionStrings": {
-       "DefaultConnection": "Your_Connection_String_Here"
-     }
 
 ![Screenshot of the Application](screenshoot.png)
    
