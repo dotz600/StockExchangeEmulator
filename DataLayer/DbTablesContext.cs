@@ -1,4 +1,4 @@
-﻿using DataLayer.DLEntity;
+﻿using GlobalEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 namespace DataLayer;
@@ -21,7 +21,9 @@ internal class DbTablesContext : DbContext
             .AddJsonFile("appsettings.json")
             .Build();
 
-        _connectionString = configuration.GetConnectionString("DefaultConnection");
+        //get connection string from appsettings.json
+        _connectionString = configuration.GetConnectionString("DefaultConnection") 
+            ?? throw new Exception("Failed to open the database.");
     }
 
     /// <summary>
@@ -30,10 +32,7 @@ internal class DbTablesContext : DbContext
     /// <param name="builder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;" +
-            "Initial Catalog=master;Integrated Security=True;" +
-            "Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;" +
-            "Application Intent=ReadWrite;Multi Subnet Failover=False");
+        builder.UseSqlServer(_connectionString);
     }
 
 
@@ -51,9 +50,9 @@ internal class DbTablesContext : DbContext
         );
 
         modelBuilder.Entity<CurrencyPair>().HasData(
-            new CurrencyPair { Id = 4, Pair = "USD/EUR", MinVal = 0.85, MaxVal = 0.95 },
-            new CurrencyPair { Id = 5, Pair = "USD/ILS", MinVal = 3.2, MaxVal = 3.8 },
-            new CurrencyPair { Id = 6, Pair = "EUR/JPY", MinVal = 125.00, MaxVal = 135.00 }
+            new CurrencyPair { Id = 1, Pair = "USD/EUR", MinVal = 0.90, MaxVal = 0.95 },
+            new CurrencyPair { Id = 2, Pair = "USD/ILS", MinVal = 3.5, MaxVal = 3.8 },
+            new CurrencyPair { Id = 3, Pair = "EUR/JPY", MinVal = 130.00, MaxVal = 135.00 }
         );
     }
 }

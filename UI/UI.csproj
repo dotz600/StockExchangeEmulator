@@ -10,5 +10,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+		<ProjectReference Include="..\GlobalEntity\GlobalEntity.csproj" />
 	</ItemGroup>
 </Project>

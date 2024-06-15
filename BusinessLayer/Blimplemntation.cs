@@ -1,5 +1,5 @@
 ﻿namespace BusinessLayer;
-
+using GlobalEntity;
 using DataLayer;
 using DataLayer.DalAPI;
 
@@ -11,34 +11,19 @@ using DataLayer.DalAPI;
 /// </summary>
 public class Blimplemntation
 {
-    private readonly IDAL _dal = new DalImplementation();
+    private readonly IDAL _dal = DALSingleton.Instance;
 
     private readonly Random _random = new();
 
     public event Action? CurrencyPairsUpdated;
 
     /// <summary>
-    /// convert each DAL CurrencyPair to BL CurrencyPair
-    /// so the UI will not be dependent on the DAL
+    /// get the list of currency pairs from the DAL
     /// </summary>
-    /// <returns>list of BL CurrencyPair</returns>
-    public List<BLCurrencyPair> Read()
-    {
-        List<BLCurrencyPair> blPairs = new List<BLCurrencyPair>();
+    /// <returns>list of CurrencyPair</returns>
+    public List<CurrencyPair> Read() => _dal.Read();
 
-        foreach (var dalPair in _dal.Read())
-        {
-            blPairs.Add(new BLCurrencyPair
-            {
-                Id = dalPair.Id,
-                Pair = dalPair.Pair,
-                MaxVal = dalPair.MaxVal,
-                MinVal = dalPair.MinVal
-            }
-            );
-        }
-        return blPairs;
-    }
+    
 
 
     /// <summary>

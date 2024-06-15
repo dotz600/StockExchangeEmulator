@@ -1,5 +1,5 @@
 ﻿using DataLayer.DalAPI;
-using DataLayer.DLEntity;
+using GlobalEntity;
 
 namespace DataLayer;
 
@@ -7,7 +7,7 @@ namespace DataLayer;
 /// implementation of the DAL layer
 /// implemnts Read and Update methods
 /// </summary>
-public class DalImplementation : IDAL
+internal class DalImplementation : IDAL
 {
     private static readonly DbTablesContext _db = new DbTablesContext();
 
@@ -32,7 +32,7 @@ public class DalImplementation : IDAL
     /// <param name="id"></param>
     /// <param name="minVal"></param>
     /// <param name="maxVal"></param>
-    /// <exception cref="Exception"></exception>
+    /// <exception cref="Exception"> in case object id not found</exception>
     public void Update(int id, double minVal, double maxVal)
     {
         var currencyPair = _db.CurrencyPairDB.Find(id) ??

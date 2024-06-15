@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-
+using GlobalEntity;
 
 namespace UI;
 /// <summary>

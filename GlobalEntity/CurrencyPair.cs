@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.DLEntity;
+namespace GlobalEntity;
 
 /// <summary>
-/// dal currency pair entity
+/// currency pair entity
 /// hold pair of currencies and the max/min values they trading
+/// in global project to be accses from all layers
 /// </summary>
 public class CurrencyPair
 {

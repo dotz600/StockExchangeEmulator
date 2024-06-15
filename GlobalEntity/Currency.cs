@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.DLEntity;
+namespace GlobalEntity;
 
 /// <summary>
-/// dal currency entity
+/// currency entity
 /// </summary>
 public class Currency
 {
